@@ -10,7 +10,7 @@ public class ArgumentsValidator implements IArgumentsValidator {
         String command = args[0];
         String inputFile = args[1];
 
-        if (!command.equalsIgnoreCase("parse")) {
+        if (!command.equals("parse")) {
             System.out.println("Неверная команда: " + command);
             printUsage();
             System.exit(1);
