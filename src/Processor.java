@@ -6,18 +6,16 @@ import Utils.PunctuationRemover;
 
 
 public class Processor {
-    // Поле класса для подсчёта общего количества слов
     private int countWords = 0;
 
     public List<Map.Entry<String, Integer>> process(String[] inputStrings) {
-        // Сбрасываем значение перед началом обработки (если метод может вызываться несколько раз)
         countWords = 0;
         Map<String, Integer> wordFreq = new HashMap<>();
 
         for (String line : inputStrings) {
             String[] words = PunctuationRemover.removePunctuation(line);
             for (String word : words) {
-                countWords++; // увеличиваем общее количество слов
+                countWords++; 
                 wordFreq.put(word, wordFreq.getOrDefault(word, 0) + 1);
             }
         }
@@ -28,7 +26,6 @@ public class Processor {
         return sortedList;
     }
 
-    // Геттер для доступа к количеству обработанных слов
     public int getCountWords() {
         return countWords;
     }
