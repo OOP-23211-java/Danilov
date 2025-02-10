@@ -20,7 +20,7 @@ class Main{
         int totalWords = processor.getCountWords();
 
         CsvWriter writer = new CsvWriter();
-        writer.write(frequencyList, totalWords); //
+        writer.write(frequencyList, totalWords);
 
         System.out.println("Completed\n"); //
         System.out.println("Total words: " + totalWords); //
