@@ -23,6 +23,6 @@ class Main{
         writer.write(frequencyList, totalWords);
 
         System.out.println("Completed\n");
-        System.out.println("Total words: " + totalWords); //
+        System.out.println("Total words: " + totalWords);
     }
 }
