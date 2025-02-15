@@ -1,2 +1,11 @@
 .idea/
+.gradle/
+build/
+out/
+gradle/
+gradlew
+gradlew.bat
 Danilov.iml
+*.txt
+*.csv
+*.gradle

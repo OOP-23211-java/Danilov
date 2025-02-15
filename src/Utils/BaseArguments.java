@@ -9,6 +9,8 @@ public abstract class BaseArguments {
         this.inputFile = inputFile;
     }
 
+    public BaseArguments() {}
+
     public String getCommand() {
         return command;
     }

@@ -17,14 +17,14 @@ public class PunctuationRemover {
             if (Character.isLetterOrDigit(c)) {
                 word.append(c);
             } else {
-                if (!word.isEmpty()) {
+                if (word.length() != 0) {
                     words.add(word.toString());
                     word.setLength(0);
                 }
             }
         }
 
-        if(!word.isEmpty()){
+        if(word.length() != 0){
             words.add(word.toString());
         }
 

@@ -1,9 +1,10 @@
+package Processors;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import Utils.PunctuationRemover;
-
 
 public class Processor {
     private int countWords = 0;
@@ -15,8 +16,11 @@ public class Processor {
         for (String line : inputStrings) {
             String[] words = PunctuationRemover.removePunctuation(line);
             for (String word : words) {
-                countWords++; 
-                wordFreq.put(word, wordFreq.getOrDefault(word, 0) + 1);
+                if (word.length() > 0) {
+                    word = word.toLowerCase();
+                    countWords++;
+                    wordFreq.put(word, wordFreq.getOrDefault(word, 0) + 1);
+                }
             }
         }
 

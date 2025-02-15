@@ -1,28 +1,58 @@
+import Exceptions.InvalidArgumentsException;
+import Exceptions.InvalidInputFileException;
+import Parser.Parser;
 import Parser.TxtParser;
+import Processors.Processor;
+import Utils.ArgumentsValidator;
+import Utils.ValidatedArguments;
+import Writer.Writer;
 import Writer.CsvWriter;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import Utils.IArgumentsValidator;
-import Utils.ArgumentsValidator;
+import Utils.BaseArgumentsValidator;
 import Utils.BaseArguments;
 
 class Main{
     public static void main(String[] args) {
-        IArgumentsValidator validator = new ArgumentsValidator();
-        BaseArguments validatedArgs = validator.validate(args);
-        String inputFile = validatedArgs.getInputFile();
+        try{
+            BaseArguments validatedArgs = validateArgs(args);
+            String inputFilePath = validatedArgs.getInputFile();
+            String outputFilePath = ((ValidatedArguments)validatedArgs).getOutputFile();
 
-        TxtParser parser = new TxtParser();
-        String[] lines = parser.parse(inputFile);
+            String[] lines = parse(inputFilePath);
 
-        Processor processor = new Processor();
-        List<Map.Entry<String, Integer>> frequencyList = processor.process(lines);
-        int totalWords = processor.getCountWords();
+            Processor processor = new Processor();
+            List<Map.Entry<String, Integer>> frequencyList = processor.process(lines);
+            int totalWords = processor.getCountWords();
 
-        CsvWriter writer = new CsvWriter();
-        writer.write(frequencyList, totalWords);
+            writeData(frequencyList, outputFilePath, totalWords);
+            System.out.println("Completed.\nTotal words: " + totalWords);
 
-        System.out.println("Completed\n");
-        System.out.println("Total words: " + totalWords);
+        } catch(InvalidArgumentsException e){
+            System.out.println("Ошибка аргументов коммандной строки: " + e.getMessage());
+        } catch(InvalidInputFileException e){
+            System.out.println("Недопустимый input файл: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Ошибка записи в файл: " + e.getMessage());
+        } catch (ClassCastException e){
+            System.out.println("Ошибка приведение типов: " + e.getMessage());
+        }
+    }
+
+    private static BaseArguments validateArgs(String[] args) throws InvalidArgumentsException {
+        BaseArgumentsValidator validator = new ArgumentsValidator();
+        return validator.validate(args);
+    }
+
+    private static String[] parse(String inputFilePath) throws InvalidInputFileException{
+        Parser parser = new TxtParser();
+        return parser.parse(inputFilePath);
+    }
+
+    private static void writeData(List<Map.Entry<String, Integer>> Data, String outputFilePath, int totalWords) throws IOException {
+        Writer writer = new CsvWriter();
+        writer.write(Data, outputFilePath, totalWords);
     }
 }
