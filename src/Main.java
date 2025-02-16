@@ -6,7 +6,7 @@ import Processors.Processor;
 import Utils.ArgumentsValidator;
 import Utils.ValidatedArguments;
 import Writer.Writer;
-import Writer.CsvWriter;
+import Writer.CSVWriter;
 
 import java.io.IOException;
 import java.util.List;
@@ -52,7 +52,7 @@ class Main{
     }
 
     private static void writeData(List<Map.Entry<String, Integer>> Data, String outputFilePath, int totalWords) throws IOException {
-        Writer writer = new CsvWriter();
+        Writer writer = new CSVWriter();
         writer.write(Data, outputFilePath, totalWords);
     }
 }
