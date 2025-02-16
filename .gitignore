@@ -1,1 +1,9 @@
-
+.gradle/
+*.gradle
+*.txt
+*.csv
+*.bat
+build/
+gradle/
+out/
+gradlew
