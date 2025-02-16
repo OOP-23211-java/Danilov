@@ -17,8 +17,6 @@ public class CSVWriter implements Writer{
 
                 writer.write(String.format("%s; %d; %.2f%%\n", word, frequency, percentage));
             }
-        } catch (IOException e) {
-            throw e;
         }
     }
 }
