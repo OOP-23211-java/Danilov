@@ -1,5 +1,4 @@
 package Parser;
-
 import Exceptions.InvalidInputFileException;
 
 public interface Parser {
