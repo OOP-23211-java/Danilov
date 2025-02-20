@@ -6,9 +6,21 @@ import java.util.List;
 import java.util.Map;
 import Utils.PunctuationRemover;
 
+/**
+ * Класс Processor обрабатывает массивы строк, формируя мапу с частотами, затем
+ * сортирует данные, хранящиеся в ней по частоте и возвращает отсортированный список пар {Слово, частота}
+ */
 public class Processor {
     private int countWords = 0;
 
+    /**
+     * Обрабатывает массив строк и считает частоту слов
+     * Для каждой строки метод класса removePunctuation {@link PunctuationRemover} удаляет из нее всю
+     * пунктуацию и возвращает массив чистых слов.
+     * @param inputStrings - массив строк.
+     * @return List<Map.Entry<String, Integer>> sortedList - список пар, где каждая пара - {слово, частота}
+     * сортируется по убыванию частоты
+     */
     public List<Map.Entry<String, Integer>> process(String[] inputStrings) {
         countWords = 0;
         Map<String, Integer> wordFreq = new HashMap<>();
