@@ -21,7 +21,7 @@ public class CSVWriter implements Writer {
      * @param countWords    общее количество слов во входном файле используемое для вычисления процентного соотношения
      * @throws IOException при ошибке ввода вывода во время записи в файл
      */
-    public void write(List<Map.Entry<String, Integer>> frequencyList, String outputFile, int countWords) throws IOException {
+    public void write(Iterable<Map.Entry<String, Integer>> frequencyList, String outputFile, int countWords) throws IOException {
         try (FileWriter writer = new FileWriter(outputFile)) {
             writer.write("Word|Frequency|Percentage\n");
             for (Map.Entry<String, Integer> entry : frequencyList) {
