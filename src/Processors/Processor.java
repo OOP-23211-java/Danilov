@@ -26,9 +26,9 @@ public class Processor {
         Map<String, Integer> wordFreq = new HashMap<>();
 
         for (String line : inputStrings) {
-            String[] words = PunctuationRemover.removePunctuation(line);
+            String[] words = PunctuationRemover.splitBySpacesAndRemovePunctuation(line);
             for (String word : words) {
-                if (word.length() > 0) {
+                if (!word.isEmpty()) {
                     word = word.toLowerCase();
                     countWords++;
                     wordFreq.put(word, wordFreq.getOrDefault(word, 0) + 1);

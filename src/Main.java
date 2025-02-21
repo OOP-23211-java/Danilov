@@ -37,7 +37,7 @@ class Main{
             final String inputFilePath = validatedArgs.getInputFile();
             final String outputFilePath = ((ValidatedArguments)validatedArgs).getOutputFile();
 
-            final String[] lines = parse(inputFilePath);
+            final String[] lines = readByLines(inputFilePath);
 
             final Processor processor = new Processor();
             final List<Map.Entry<String, Integer>> frequencyList = processor.process(lines);
@@ -74,7 +74,7 @@ class Main{
      * @return массив строк файла
      * @throws InvalidInputFileException если файл не существует или недоступен для чтения
      */
-    private static String[] parse(String inputFilePath) throws InvalidInputFileException{
+    private static String[] readByLines(String inputFilePath) throws InvalidInputFileException{
         Parser parser = new TxtParser();
         return parser.parse(inputFilePath);
     }

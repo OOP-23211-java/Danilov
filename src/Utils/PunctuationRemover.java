@@ -17,7 +17,7 @@ public class PunctuationRemover {
      * @param inputText текст для обработки
      * @return массив строк, содержащий слова из которых удалена пунктуация.
      */
-    public static String[] removePunctuation(String inputText){
+    public static String[] splitBySpacesAndRemovePunctuation(String inputText){
         if (inputText == null || inputText.isEmpty()) {
             return new String[0];
         }
