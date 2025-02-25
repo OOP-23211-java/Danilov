@@ -3,16 +3,13 @@ import Exceptions.InvalidInputFileException;
 import Parser.Parser;
 import Parser.TxtParser;
 import Processors.Processor;
-import Utils.ArgumentsValidator;
-import Utils.ValidatedArguments;
+import Utils.*;
 import Writer.Writer;
 import Writer.CSVWriter;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import Utils.BaseArgumentsValidator;
-import Utils.BaseArguments;
 
 /**
  * Программа выполняет следующие шаги:

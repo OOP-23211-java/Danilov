@@ -55,3 +55,4 @@ public abstract class BaseArguments {
         this.inputFile = inputFile;
     }
 }
+
