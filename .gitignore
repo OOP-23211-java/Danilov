@@ -50,3 +50,4 @@
 
 # === VS Code ===
 .vscode/
+*.Zone.Identifier
